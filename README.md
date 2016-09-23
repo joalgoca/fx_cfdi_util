@@ -14,8 +14,11 @@ Aplicación Desktop para la conversión de XML a PDF de CFDI´s de nómina e ing
 </ul>
 
 <h3>Notas</h3>
-Aún no tengo la documentación del proyecto pero mi intensión es ser más cuidadoso de este importante detalle, por tal motivo empiezo a utilizar
-github.
+<ul>
+<li>El proyecto esta construido en Netbeans 8.1</li>
+<li>Utiliza java 1.8</li>
+<li>Aún no tengo la documentación del proyecto pero mi intensión es ser más cuidadoso de este importante detalle, por tal motivo empiezo a utilizar github.</li>
+</ul>
 
 <h3>Motivación</h3>
 <p>Uno de los proyectos que he participado es sobre el timbrado de ingresos y nómina en Gobierno, en dicho proyecto muy comodamente
@@ -48,5 +51,5 @@ y exportación a Excel, pues mi proyecto tiene que ir más alla y por tal motivo
 <li>Embeber derby BD a un proyecto desktop</li>
 <li>Utilizar launch4j para convertir jar a exe</li>
 </ul>
-<p>Que si no me hibiera decidido a hacerlo pues no hubiera tenido esta experiencia.</p>
+<p>Que si no me hubiera decidido a hacer el proyecto no obtenido dicha experiencia.</p>
 
