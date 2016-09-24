@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="460.0" minWidth="900.0" prefHeight="559.0" prefWidth="756.0" style="-fx-background-color: yellow;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cfdi.FXMLDocumentController">
+   <children>
+      <SplitPane minHeight="460.0" minWidth="600.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" VBox.vgrow="ALWAYS">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TabPane fx:id="tabPanePrincipal" layoutX="120.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                      <Tab text="Administra CFDI">
+                           <content>
+                              <VBox>
+                                 <children>
+                                    <ToolBar fx:id="toolBar" prefHeight="40.0" prefWidth="200.0">
+                                      <items>
+                                          <TextField fx:id="txtRfcEmisor" prefHeight="25.0" prefWidth="115.0" promptText="RFC emisor" />
+                                          <TextField fx:id="txtRfcReceptor" prefHeight="25.0" prefWidth="115.0" promptText="RFC receptor" />
+                                          <ComboBox fx:id="cmbAnio" prefHeight="25.0" prefWidth="70.0" />
+                                          <ComboBox fx:id="cmbMes" prefHeight="25.0" prefWidth="56.0" />
+                                          <ComboBox fx:id="cmbColumna" prefWidth="150.0" />
+                                          <TextField fx:id="txtFiltro" />
+                                        <Button fx:id="btnFiltrar" mnemonicParsing="false" onAction="#handleBtnFiltrarAction" text="Filtrar" />
+                                          <Button fx:id="btnLimpiarFiltro" mnemonicParsing="false" onAction="#handleBtnLimpiarFiltroAction" text="Limpiar" />
+                                          <Separator orientation="VERTICAL" prefHeight="0.0" />
+                                          <TextField fx:id="txtRows" alignment="CENTER_RIGHT" disable="true" prefHeight="25.0" prefWidth="159.0" text="0-0 de 0" />
+                                          <TextField fx:id="txtTotalPag" disable="true" prefWidth="60.0" />
+                                          <TextField fx:id="txtNoPagina" prefWidth="60.0" />
+                                          <Button fx:id="btnIrPagina" mnemonicParsing="false" onAction="#handleTxtPaginaAction" text="IR" />
+                                          <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
+                                          <Button fx:id="btnExportar" mnemonicParsing="false" onAction="#handleBtnExportarGeneralAction" text="Exportar" />
+                                          <Button fx:id="btnExportarDetalle" mnemonicParsing="false" onAction="#handleBtnExportarDetalleAction" text="Exportar detalle" />
+                                      </items>
+                                    </ToolBar>
+                                    <TableView fx:id="tableView" layoutX="70.0" layoutY="169.0" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
+                           </content>
+                      </Tab>
+                        <Tab text="Almacena XML/Exporta PDF">
+                           <content>
+                              <VBox>
+                                 <children>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="184.0" prefWidth="598.0" VBox.vgrow="NEVER">
+                                       <children>
+                                          <CheckBox id="chkRecursivo" fx:id="chkRecursivo" layoutX="379.0" layoutY="50.0" mnemonicParsing="false" text="Explorar directorios hijos" />
+                                          <TextField id="txtDirectorioXmltoPdf" fx:id="txtDirectorioXmltoPdf" layoutX="98.0" layoutY="14.0" prefHeight="25.0" prefWidth="342.0" />
+                                          <Label layoutX="26.0" layoutY="18.0" text="Directorio:" />
+                                          <Button id="btnSeleccionarDirectorio" fx:id="btnSeleccionarDirectorio" layoutX="455.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBtnSeleccionarDirectorioAction" text="Seleccionar" />
+                                          <Button id="btnGenerarPdf" fx:id="btnGenerarPdf" layoutX="98.0" layoutY="49.0" mnemonicParsing="false" onAction="#handlebtnGenerarPdfAction" prefHeight="37.0" prefWidth="100.0" text="Generar">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </Button>
+                                          <Button id="btnGuardarCfdi" fx:id="btnGuardarCfdi" layoutX="230.0" layoutY="49.0" mnemonicParsing="false" onAction="#handlebtnGuardarCfdiAction" prefHeight="37.0" prefWidth="100.0" text="Almacenar">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                    <BarChart fx:id="chartResultadosExportar" VBox.vgrow="ALWAYS">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                       <padding>
+                                          <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                       </padding>
+                                    </BarChart>
+                                    <AnchorPane VBox.vgrow="NEVER">
+                                       <children>
+                                           <TextField id="txtProgress" fx:id="txtProgress" alignment="CENTER_RIGHT" layoutX="40.0" prefHeight="25.0" prefWidth="250.0" text="Progreso:" />
+                                           <ProgressBar id="pgbarConversorPdf" fx:id="pgbarConversorPdf" layoutX="300.0" layoutY="4.0" prefWidth="200.0" progress="0.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="3.0" top="3.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                      <Tab text="Descarga masiva XML">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                      <items>
+                                        <Button id="btnDescargar" fx:id="btnDescargar" mnemonicParsing="false" onAction="#handleBtnDescargarAction" text="Descargar lista XML" />
+                                      </items>
+                                    </ToolBar>
+                                    <WebView id="webViewSat" fx:id="webViewSat" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
+                           </content>
+                      </Tab>
+                        <Tab text="Configuración">
+                           <content>
+                              <VBox>
+                                 <children>
+                                    <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                      <items>
+                                        <Button fx:id="btnActualizarConfiguracion" mnemonicParsing="false" onAction="#handleActualizarBtnConfiguracionAction" text="Actualizar configuración" />
+                                          <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="3.0" />
+                                          <Button fx:id="btnTruncateDb" mnemonicParsing="false" onAction="#handleBtnTruncateDbAction" text="Borrar base datos" />
+                                      </items>
+                                    </ToolBar>
+                                    <AnchorPane>
+                                       <children>
+                                          <GridPane layoutX="-1.0" prefHeight="404.0" prefWidth="599.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="74.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="347.0" minWidth="10.0" prefWidth="325.0" />
+                                                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="194.0" minHeight="7.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="174.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label text="Contraseña:" />
+                                                <Label text="Correo licencia:" GridPane.rowIndex="1" />
+                                                <Label text="Key:" GridPane.rowIndex="2" />
+                                                <TextField fx:id="txtCorreo" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <TextField fx:id="txtKey" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <Button fx:id="btnSincronizar" mnemonicParsing="false" text="Sincronizar" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <PasswordField fx:id="txtContrasena" GridPane.columnIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </GridPane.margin>
+                                                </PasswordField>
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</VBox>
