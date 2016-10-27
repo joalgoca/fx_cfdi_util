@@ -31,7 +31,7 @@ Aplicación Desktop para la conversión de XML a PDF de CFDI´s de nómina e ing
 </ol>
 <p>Si no hubiera decidido realizar este proyecto no habría obtenido dicha experiencia. Espero que este proyecto sea de ayuda, para quienes quieran experimentar con CFDI´s o utilizar esta solución.</p>
 <p>Si no eres programador y quieres la aplicación compilada y lista para usarse puedes descargarla desde este enlace <a href="https://dl.dropboxusercontent.com/u/93499163/FX_CFDI_UTIL.rar" target="_blank">Descargar FX_CFDI_UTIL.rar</a></p>
-<p>Una vez descargado se desempaquetan los archivos en el lugar de preferencia (es portable en USB), el único requerimieno es que la computadora debe tener instalado JRE o JDK de java en su versión 1.8+</p>
+<p>Una vez descargado el archivo, se desempaquetan los archivos en el lugar de preferencia (es portable en USB), el único requerimiento es que la computadora debe tener instalado java JRE o JDK en su versión 1.8+.</p>
 
 <h3>Capturas de pantalla</h3>
 <img src="https://github.com/joalgoca/fx_cfdi_util/blob/master/snapshot/Administraci%C3%B3n%20de%20CFDI%C2%B4s.png" width="280" height="200" border="2"/>
